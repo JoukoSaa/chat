@@ -4,10 +4,9 @@
     <script src='app.js' defer></script>
   </head>
 <body>
-  <h3>CHAT GPT mini version -03.8</h3>
+  <h3>CHAT mini version -0.078 (muisti = 0 toimii)</h3>
 
-  Muisti (0-10):<input type='number' id='muisti' min="0" max="10"></input>
-   tulostuspituus (11-1000):<input type='number' id='pituus' min="11" max="1000"></input>
+
   <p>
   <label for="dog-names">Valitse alkuteksti:</label>
     <select name="dog-names" id="dog-names">
@@ -19,16 +18,9 @@
           <option value="main.dart">main.dart - Tämän ohjelman koodi</option>
       <option value="other">ei mitään (kirjoita tai kopioi lähtöteksti omin neuvoin)</option>
     </select>
-  <button id='nappi'>Käynnistä!</button> <button id='pika'>main.dart</button></p>
-
-
-  <a href="https://main.dart">main.dart ilman polkua, ei toimii</a> 
-  <a href="main.dart">main.dart ilman mitaan, hieno omalla koneella</a> 
-  
-  <a href="https://joukosaa.github.io/chat/"> githubiib please </a> 
-  <a href="https://joukosaa.github.io/chat/main.dart"> githubiin polulla please </a> 
-  <a href="https://joukosaa.github.io/chat/maindart.txt"> github-txt polulla please, kiva </a>
-
+  <button id='pika'>main.dart</button></p>
+ 
+<p><a href="https://joukosaa.github.io/chat/maindart.txt"> github-txt polulla please, kiva </a></p>
 
 
   <p><label for="alkuteksti">Lähtöteksti:</label></p>
@@ -38,12 +30,18 @@
   
 
 <p><label for="story">Lähtöteksti (readonly):</label></p>
-<p id='story' name = 'story'></p>
+<pre>
+<p id='story' name = 'story' wrap></p></pre>
 
-  <p></p>
-  Tähän tulee ohjelman generoima tekstix:
+  <p>
+    Muisti (0-10):<input type='number' id='muisti' min="0" max="10"></input>
+    tulostuspituus (11-1000):<input type='number' id='pituus' min="11" max="1000"></input>
+    <button id='nappi'>Käynnistä!</button> 
+  </p>
+  Tähän tulee ohjelman generoima teksti:
+  <pre style="white-space: pre-wrap;">
   <p id='teksti'></p>
-
+  </pre>
 
 </body>
 </html>

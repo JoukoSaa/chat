@@ -2952,6 +2952,20 @@
     ArgumentError$value(value, $name, message) {
       return new A.ArgumentError(true, value, $name, message);
     },
+    RangeError$(message) {
+      var _null = null;
+      return new A.RangeError(_null, _null, false, _null, _null, message);
+    },
+    RangeError$range(invalidValue, minValue, maxValue, $name, message) {
+      return new A.RangeError(minValue, maxValue, true, invalidValue, $name, "Invalid value");
+    },
+    RangeError_checkValidRange(start, end, $length) {
+      if (start > $length)
+        throw A.wrapException(A.RangeError$range(start, 0, $length, "start", null));
+      if (start > end || end > $length)
+        throw A.wrapException(A.RangeError$range(end, start, $length, "end", null));
+      return end;
+    },
     UnsupportedError$(message) {
       return new A.UnsupportedError(message);
     },
@@ -2960,9 +2974,6 @@
     },
     StateError$(message) {
       return new A.StateError(message);
-    },
-    print(object) {
-      A.printString(A.S(object));
     },
     Error: function Error() {
     },
@@ -3130,24 +3141,9 @@
     _EventStreamSubscription_closure: function _EventStreamSubscription_closure(t0) {
       this.onData = t0;
     },
-    SvgElement: function SvgElement() {
+    _JSRandom: function _JSRandom() {
     },
-    printString(string) {
-      if (typeof dartPrint == "function") {
-        dartPrint(string);
-        return;
-      }
-      if (typeof console == "object" && typeof console.log != "undefined") {
-        console.log(string);
-        return;
-      }
-      if (typeof window == "object")
-        return;
-      if (typeof print == "function") {
-        print(string);
-        return;
-      }
-      throw "Unable to print message: " + String(string);
+    SvgElement: function SvgElement() {
     },
     throwLateFieldADI(fieldName) {
       return A.throwExpression(new A.LateError("Field '" + A.S(fieldName) + "' has been assigned during initialization."));
@@ -3178,20 +3174,35 @@
       return false;
     },
     main() {
-      var t1 = document,
-        t2 = J.get$onClick$x(t1.querySelector("#nappi")),
-        t3 = t2.$ti;
-      t3._eval$1("~(1)?")._as(A.main__tervehdi$closure());
-      type$.nullable_void_Function._as(null);
-      A._EventStreamSubscription$(t2._target, t2._eventType, A.main__tervehdi$closure(), false, t3._precomputed1);
-      t1 = J.get$onClick$x(t1.querySelector("#pika"));
-      t3 = t1.$ti;
-      A._EventStreamSubscription$(t1._target, t1._eventType, t3._eval$1("~(1)?")._as(A.main__luetiedosto$closure()), false, t3._precomputed1);
+      var $async$goto = 0,
+        $async$completer = A._makeAsyncAwaitCompleter(type$.dynamic),
+        t1, t2, t3;
+      var $async$main = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
+        if ($async$errorCode === 1)
+          return A._asyncRethrow($async$result, $async$completer);
+        while (true)
+          switch ($async$goto) {
+            case 0:
+              // Function start
+              t1 = document;
+              t2 = J.get$onClick$x(t1.querySelector("#nappi"));
+              t3 = t2.$ti;
+              t3._eval$1("~(1)?")._as(A.main__tervehdi$closure());
+              type$.nullable_void_Function._as(null);
+              A._EventStreamSubscription$(t2._target, t2._eventType, A.main__tervehdi$closure(), false, t3._precomputed1);
+              t1 = J.get$onClick$x(t1.querySelector("#pika"));
+              t3 = t1.$ti;
+              A._EventStreamSubscription$(t1._target, t1._eventType, t3._eval$1("~(1)?")._as(A.main__luetiedosto$closure()), false, t3._precomputed1);
+              // implicit return
+              return A._asyncReturn(null, $async$completer);
+          }
+      });
+      return A._asyncStartSync($async$main, $async$completer);
     },
     luetiedosto(e) {
       var $async$goto = 0,
         $async$completer = A._makeAsyncAwaitCompleter(type$.dynamic),
-        sisalto;
+        sisalto, t1;
       var $async$luetiedosto = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -3199,15 +3210,15 @@
           switch ($async$goto) {
             case 0:
               // Function start
-              A.print("luetiedosto alkaa");
+              t1 = document;
+              J.set$text$x(t1.querySelector("#story"), "luetiedosto alkaa");
               $async$goto = 2;
-              return A._asyncAwait(A.HttpRequest_getString("C:/Tools/chat/web/main.dart"), $async$luetiedosto);
+              return A._asyncAwait(A.HttpRequest_getString("https://joukosaa.github.io/chat/maindart.txt"), $async$luetiedosto);
             case 2:
               // returning from await.
               sisalto = $async$result;
-              A.print("File Contents\n---------------");
-              A.print(sisalto);
-              J.set$text$x(document.querySelector("#teksti"), sisalto);
+              J.set$text$x(t1.querySelector("#story"), sisalto);
+              J.set$text$x(t1.querySelector("#alkuteksti"), "");
               // implicit return
               return A._asyncReturn(null, $async$completer);
           }
@@ -3215,23 +3226,45 @@
       return A._asyncStartSync($async$luetiedosto, $async$completer);
     },
     tervehdi(e) {
-      var pituus, lahto,
+      var t2, muisti, pituus, alkuteksti, story, elementti, storyPituus, muistiPatka, t3, t4, tulosTeksti, hyppyStoryyn,
         _s7_ = "#teksti",
-        t1 = document,
-        t2 = type$.legacy_InputElement,
-        muisti = A.int_parse(t2._as(t1.querySelector("#muisti")).value);
+        _s11_ = "#alkuteksti",
+        t1 = document;
+      J.set$text$x(t1.querySelector(_s7_), "");
+      t2 = type$.legacy_InputElement;
+      muisti = A.int_parse(t2._as(t1.querySelector("#muisti")).value);
       if (muisti > 10) {
         J.set$text$x(t1.querySelector(_s7_), "Muisti on yli 10, virhe!");
         return;
       }
       pituus = A.int_parse(t2._as(t1.querySelector("#pituus")).value);
-      lahto = t2._as(t1.querySelector("#alkuteksti")).value;
-      J.set$text$x(t1.querySelector("#story"), lahto);
-      if (lahto.length < 20) {
-        J.set$text$x(t1.querySelector(_s7_), "L\xe4ht\xf6teksti liian lyhyt!");
-        return;
+      alkuteksti = t2._as(t1.querySelector(_s11_)).value;
+      story = t1.querySelector("#story").textContent;
+      if (story.length < 20) {
+        if (alkuteksti.length >= 20) {
+          J.set$text$x(t1.querySelector("#story"), alkuteksti);
+          elementti = t2._as(t1.querySelector(_s11_));
+          (elementti && B.InputElement_methods).set$value(elementti, "");
+        } else {
+          J.set$text$x(t1.querySelector(_s7_), "L\xe4ht\xf6teksti liian lyhyt!");
+          return;
+        }
+        story = alkuteksti;
       }
-      J.set$text$x(t1.querySelector(_s7_), "Hei " + muisti + " ja " + pituus + ", hauska tutustua " + lahto + " !");
+      storyPituus = story.length;
+      story = story + " + " + B.JSString_methods.substring$2(story, 0, 20);
+      muistiPatka = B.JSString_methods.substring$2(story, 0, muisti);
+      J.set$text$x(t1.querySelector(_s7_), muistiPatka);
+      for (t2 = storyPituus, t3 = muisti === 0, t4 = story.length, tulosTeksti = muistiPatka; tulosTeksti.length < pituus;) {
+        hyppyStoryyn = B.C__JSRandom.nextInt$1(storyPituus);
+        if (t3) {
+          if (!(hyppyStoryyn >= 0 && hyppyStoryyn < t4))
+            return A.ioore(story, hyppyStoryyn);
+          tulosTeksti += story[hyppyStoryyn];
+        } else
+          tulosTeksti = tulosTeksti + " arvotaan luku v\xe4lilt\xe4 0-" + t2 + ", tulos " + hyppyStoryyn + " ";
+        J.set$text$x(t1.querySelector(_s7_), tulosTeksti);
+      }
     }
   },
   J = {
@@ -3512,6 +3545,9 @@
       if (typeof other != "string")
         throw A.wrapException(A.ArgumentError$value(other, null, null));
       return receiver + other;
+    },
+    substring$2(receiver, start, end) {
+      return receiver.substring(start, A.RangeError_checkValidRange(start, end, receiver.length));
     },
     toString$0(receiver) {
       return receiver;
@@ -4493,7 +4529,12 @@
     $signature: 15
   };
   A.HttpRequestEventTarget.prototype = {};
-  A.InputElement.prototype = {$isInputElement: 1};
+  A.InputElement.prototype = {
+    set$value(receiver, value) {
+      receiver.value = value;
+    },
+    $isInputElement: 1
+  };
   A.MouseEvent.prototype = {$isMouseEvent: 1};
   A.Node.prototype = {
     toString$0(receiver) {
@@ -4520,6 +4561,13 @@
       return this.onData.call$1(type$.Event._as(e));
     },
     $signature: 16
+  };
+  A._JSRandom.prototype = {
+    nextInt$1(max) {
+      if (max <= 0 || max > 4294967296)
+        throw A.wrapException(A.RangeError$("max must be in range 0 < max \u2264 2^32, was " + max));
+      return Math.random() * max >>> 0;
+    }
   };
   A.SvgElement.prototype = {
     get$onClick(receiver) {
@@ -4548,7 +4596,7 @@
     var _inherit = hunkHelpers.inherit,
       _inheritMany = hunkHelpers.inheritMany;
     _inherit(A.Object, null);
-    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.TypeErrorDecoder, A.NullThrownFromJavaScriptException, A.ExceptionAndStackTrace, A._StackTrace, A.Closure, A.Rti, A._FunctionParameters, A._Type, A._TimerImpl, A._AsyncAwaitCompleter, A.AsyncError, A._Completer, A._FutureListener, A._Future, A._AsyncCallbackEntry, A.Stream, A.StreamSubscription, A._StreamIterator, A._Zone, A.StackOverflowError, A._Exception, A.FormatException, A.Null, A._StringStackTrace, A.StringBuffer, A.EventStreamProvider]);
+    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.TypeErrorDecoder, A.NullThrownFromJavaScriptException, A.ExceptionAndStackTrace, A._StackTrace, A.Closure, A.Rti, A._FunctionParameters, A._Type, A._TimerImpl, A._AsyncAwaitCompleter, A.AsyncError, A._Completer, A._FutureListener, A._Future, A._AsyncCallbackEntry, A.Stream, A.StreamSubscription, A._StreamIterator, A._Zone, A.StackOverflowError, A._Exception, A.FormatException, A.Null, A._StringStackTrace, A.StringBuffer, A.EventStreamProvider, A._JSRandom]);
     _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JSArray, J.JSNumber, J.JSString]);
     _inheritMany(J.JavaScriptObject, [J.LegacyJavaScriptObject, A.EventTarget, A.DomException, A.Event]);
     _inheritMany(J.LegacyJavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction]);
@@ -4640,6 +4688,7 @@
   })();
   (function constants() {
     B.HttpRequest_methods = A.HttpRequest.prototype;
+    B.InputElement_methods = A.InputElement.prototype;
     B.Interceptor_methods = J.Interceptor.prototype;
     B.JSArray_methods = J.JSArray.prototype;
     B.JSInt_methods = J.JSInt.prototype;
@@ -4768,6 +4817,7 @@
 };
     B.C_JS_CONST3 = function(hooks) { return hooks; }
 ;
+    B.C__JSRandom = new A._JSRandom();
     B.C__RootZone = new A._RootZone();
     B.C__StringStackTrace = new A._StringStackTrace();
   })();
