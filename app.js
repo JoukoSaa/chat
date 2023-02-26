@@ -2960,11 +2960,14 @@
       return new A.RangeError(minValue, maxValue, true, invalidValue, $name, "Invalid value");
     },
     RangeError_checkValidRange(start, end, $length) {
-      if (start > $length)
+      if (0 > start || start > $length)
         throw A.wrapException(A.RangeError$range(start, 0, $length, "start", null));
-      if (start > end || end > $length)
-        throw A.wrapException(A.RangeError$range(end, start, $length, "end", null));
-      return end;
+      if (end != null) {
+        if (start > end || end > $length)
+          throw A.wrapException(A.RangeError$range(end, start, $length, "end", null));
+        return end;
+      }
+      return $length;
     },
     UnsupportedError$(message) {
       return new A.UnsupportedError(message);
@@ -3187,9 +3190,9 @@
               t1 = document;
               t2 = J.get$onClick$x(t1.querySelector("#nappi"));
               t3 = t2.$ti;
-              t3._eval$1("~(1)?")._as(A.main__tervehdi$closure());
+              t3._eval$1("~(1)?")._as(A.main__generoi$closure());
               type$.nullable_void_Function._as(null);
-              A._EventStreamSubscription$(t2._target, t2._eventType, A.main__tervehdi$closure(), false, t3._precomputed1);
+              A._EventStreamSubscription$(t2._target, t2._eventType, A.main__generoi$closure(), false, t3._precomputed1);
               t1 = J.get$onClick$x(t1.querySelector("#pika"));
               t3 = t1.$ti;
               A._EventStreamSubscription$(t1._target, t1._eventType, t3._eval$1("~(1)?")._as(A.main__luetiedosto$closure()), false, t3._precomputed1);
@@ -3225,8 +3228,8 @@
       });
       return A._asyncStartSync($async$luetiedosto, $async$completer);
     },
-    tervehdi(e) {
-      var t2, muisti, pituus, alkuteksti, story, elementti, storyPituus, muistiPatka, t3, t4, tulosTeksti, hyppyStoryyn,
+    generoi(e) {
+      var t2, muisti, alkuteksti, story, elementti, storyPituus, muistiPatka, t3, tulosTeksti, hyppyStoryyn, t4, seuraava, tulosTeksti0, muistiPatka0,
         _s7_ = "#teksti",
         _s11_ = "#alkuteksti",
         t1 = document;
@@ -3237,7 +3240,6 @@
         J.set$text$x(t1.querySelector(_s7_), "Muisti on yli 10, virhe!");
         return;
       }
-      pituus = A.int_parse(t2._as(t1.querySelector("#pituus")).value);
       alkuteksti = t2._as(t1.querySelector(_s11_)).value;
       story = t1.querySelector("#story").textContent;
       if (story.length < 20) {
@@ -3255,14 +3257,30 @@
       story = story + " + " + B.JSString_methods.substring$2(story, 0, 20);
       muistiPatka = B.JSString_methods.substring$2(story, 0, muisti);
       J.set$text$x(t1.querySelector(_s7_), muistiPatka);
-      for (t2 = storyPituus, t3 = muisti === 0, t4 = story.length, tulosTeksti = muistiPatka; tulosTeksti.length < pituus;) {
+      for (t2 = muisti === 0, t3 = story.length, tulosTeksti = muistiPatka; tulosTeksti.length < 1000;) {
         hyppyStoryyn = B.C__JSRandom.nextInt$1(storyPituus);
-        if (t3) {
-          if (!(hyppyStoryyn >= 0 && hyppyStoryyn < t4))
+        if (t2) {
+          if (!(hyppyStoryyn >= 0 && hyppyStoryyn < t3))
             return A.ioore(story, hyppyStoryyn);
           tulosTeksti += story[hyppyStoryyn];
         } else
-          tulosTeksti = tulosTeksti + " arvotaan luku v\xe4lilt\xe4 0-" + t2 + ", tulos " + hyppyStoryyn + " ";
+          for (; true;) {
+            t4 = hyppyStoryyn + muisti;
+            if (muistiPatka === B.JSString_methods.substring$2(story, hyppyStoryyn, t4)) {
+              if (!(t4 >= 0 && t4 < t3))
+                return A.ioore(story, t4);
+              seuraava = story[t4];
+              tulosTeksti0 = tulosTeksti + seuraava;
+              muistiPatka0 = B.JSString_methods.substring$1(muistiPatka, 1) + seuraava;
+              tulosTeksti = tulosTeksti0;
+              muistiPatka = muistiPatka0;
+              break;
+            } else {
+              ++hyppyStoryyn;
+              if (hyppyStoryyn === storyPituus)
+                hyppyStoryyn = 0;
+            }
+          }
         J.set$text$x(t1.querySelector(_s7_), tulosTeksti);
       }
     }
@@ -3548,6 +3566,9 @@
     },
     substring$2(receiver, start, end) {
       return receiver.substring(start, A.RangeError_checkValidRange(start, end, receiver.length));
+    },
+    substring$1($receiver, start) {
+      return this.substring$2($receiver, start, null);
     },
     toString$0(receiver) {
       return receiver;
@@ -4590,7 +4611,7 @@
     _static_0(A, "async___startMicrotaskLoop$closure", "_startMicrotaskLoop", 0);
     _instance(A._Completer.prototype, "get$completeError", 0, 1, null, ["call$2", "call$1"], ["completeError$2", "completeError$1"], 11, 0, 0);
     _static_1(A, "main__luetiedosto$closure", "luetiedosto", 1);
-    _static_1(A, "main__tervehdi$closure", "tervehdi", 1);
+    _static_1(A, "main__generoi$closure", "generoi", 1);
   })();
   (function inheritance() {
     var _inherit = hunkHelpers.inherit,

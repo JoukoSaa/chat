@@ -4,7 +4,7 @@ import 'dart:math';
 // Käännä komennolla
 // C:\Tools\flutter\bin\dart compile js -o app.js main.dart
 main() async {
-  querySelector('#nappi').onClick.listen(tervehdi);
+  querySelector('#nappi').onClick.listen(generoi);
   querySelector('#pika').onClick.listen(luetiedosto);
 }
 
@@ -23,7 +23,7 @@ luetiedosto(e) async {
   querySelector('#alkuteksti').text = '';
 }
 
-tervehdi(e) {
+generoi(e) {
   querySelector('#teksti').text = '';
   InputElement elementti = querySelector('#muisti');
   int muisti = int.parse(elementti.value);
@@ -36,14 +36,11 @@ tervehdi(e) {
     return;
   }
 
-  elementti = querySelector('#pituus');
-  int pituus = int.parse(elementti.value);
+  int pituus = 1000;
 
   elementti = querySelector('#alkuteksti');
   var alkuteksti = elementti.value;
 
-  //InputElement x = document.getElementById("story");
-  //elementti = querySelector('#story');
   var story = querySelector('#story').text;
 
   if (story.length < 20) {
@@ -61,9 +58,9 @@ tervehdi(e) {
   var storyPituus = story.length;
   story = '$story + ${story.substring(0, 20)}';
 
-  // nyt se alkaa!
   var muistiPatka = story.substring(0, muisti);
   var tulosTeksti = muistiPatka;
+  var seuraava = 'a';
   querySelector('#teksti').text = tulosTeksti;
   while (tulosTeksti.length < pituus) {
     var rng = Random();
@@ -71,8 +68,23 @@ tervehdi(e) {
     if (muisti == 0) {
       tulosTeksti = '$tulosTeksti${story[hyppyStoryyn]}';
     } else {
-      tulosTeksti =
-          '$tulosTeksti arvotaan luku väliltä 0-$storyPituus, tulos $hyppyStoryyn ';
+      //tulosTeksti = '$tulosTeksti arvotaan luku väliltä 0-$storyPituus, tulos $hyppyStoryyn ';
+      while (true) {
+        if (muistiPatka ==
+            story.substring(hyppyStoryyn, hyppyStoryyn + muisti)) {
+          seuraava = story[hyppyStoryyn + muisti];
+          tulosTeksti = '$tulosTeksti$seuraava';
+          muistiPatka = '${muistiPatka.substring(
+            1,
+          )}$seuraava';
+          break;
+        } else {
+          hyppyStoryyn++;
+          if (hyppyStoryyn == storyPituus) {
+            hyppyStoryyn = 0;
+          }
+        }
+      }
     }
     querySelector('#teksti').text = tulosTeksti;
   }
