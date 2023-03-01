@@ -3463,19 +3463,18 @@
       return A._asyncStartSync($async$luetiedosto, $async$completer);
     },
     generoi(e) {
-      var t2, muisti, alkuteksti, story, storyPituus, muistiPatka, t3, tulosTeksti, hyppyStoryyn, t4, seuraava, tulosTeksti0, muistiPatka0,
+      var alkuteksti, story, storyPituus, muistiPatka, t3, tulosTeksti, hyppyStoryyn, paluu, t4, seuraava, tulosTeksti0, muistiPatka0,
         _s7_ = "#teksti",
         _s6_ = "#story",
-        t1 = document;
-      J.set$text$x(t1.querySelector(_s7_), "Kohta t\xe4ss\xe4 on generoitu teksti?");
-      t2 = type$.legacy_InputElement;
-      muisti = A.int_parse(t2._as(t1.querySelector("#muisti")).value);
+        t1 = document,
+        t2 = type$.legacy_InputElement,
+        muisti = A.int_parse(t2._as(t1.querySelector("#muisti")).value);
       if (muisti > 10) {
         J.set$text$x(t1.querySelector(_s7_), "Muisti on yli 10, virhe!");
         return;
       }
-      if (muisti === 4)
-        J.set$text$x(t1.querySelector(_s7_), "muistin pituus on nelj\xe4");
+      if (muisti === 3)
+        J.set$text$x(t1.querySelector(_s7_), "muistin pituus on 3");
       alkuteksti = t2._as(t1.querySelector("#alkuteksti")).value;
       story = t1.querySelector(_s6_).textContent;
       if (story.length < 20)
@@ -3487,7 +3486,7 @@
           return;
         }
       storyPituus = story.length;
-      story = story + " + " + B.JSString_methods.substring$2(story, 0, 20);
+      story += B.JSString_methods.substring$2(story, 0, 20);
       muistiPatka = B.JSString_methods.substring$2(story, 0, muisti);
       J.set$text$x(t1.querySelector(_s7_), muistiPatka);
       for (t2 = muisti === 0, t3 = story.length, tulosTeksti = muistiPatka; tulosTeksti.length < 1000;) {
@@ -3497,7 +3496,7 @@
             return A.ioore(story, hyppyStoryyn);
           tulosTeksti += story[hyppyStoryyn];
         } else
-          for (; true;) {
+          for (paluu = 0; true;) {
             t4 = hyppyStoryyn + muisti;
             if (muistiPatka === B.JSString_methods.substring$2(story, hyppyStoryyn, t4)) {
               if (!(t4 >= 0 && t4 < t3))
@@ -3510,8 +3509,14 @@
               break;
             } else {
               ++hyppyStoryyn;
-              if (hyppyStoryyn >= storyPituus)
+              if (hyppyStoryyn >= storyPituus) {
+                if (paluu > 0) {
+                  J.set$text$x(t1.querySelector(_s7_), tulosTeksti + " tuplapaluu /" + muistiPatka + "/ OHJELMAVIRHE");
+                  return;
+                }
+                ++paluu;
                 hyppyStoryyn = 0;
+              }
             }
           }
         J.set$text$x(t1.querySelector(_s7_), tulosTeksti);
