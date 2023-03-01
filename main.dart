@@ -4,8 +4,16 @@ import 'dart:math';
 // Käännä komennolla
 // C:\Tools\flutter\bin\dart compile js -o app.js main.dart
 main() async {
-  querySelector('#nappi').onClick.listen(generoi);
+  var elementti = Element.div();
+  elementti.className = 'vaihtoehto';
+  elementti.text = 'lueminut.txt - taustaa ja ohjeita';
+  elementti.onClick.listen((e) {
+    luetiedosto('main.dart');
+  });
+  querySelector('#vastaukset').children.add(elementti);
+
   querySelector('#pika').onClick.listen(luetiedosto);
+  querySelector('#nappi').onClick.listen(generoi);
 }
 
 virheteksti(aputeksti) {
@@ -13,18 +21,16 @@ virheteksti(aputeksti) {
   return;
 }
 
-luetiedosto(e) async {
-  querySelector('#story').text = 'luetiedosto alkaa';
-
-  var osoite = 'https://joukosaa.github.io/chat/maindart.txt';
+luetiedosto(tied) async {
+  var osoite = 'https://joukosaa.github.io/chat/$tied';
   var sisalto = await HttpRequest.getString(osoite);
-
   querySelector('#story').text = sisalto;
   querySelector('#alkuteksti').text = '';
+  querySelector('#teksti').text = '';
 }
 
 generoi(e) {
-  querySelector('#teksti').text = '';
+  querySelector('#teksti').text = 'Kohta tässä on generoitu teksti?';
   InputElement elementti = querySelector('#muisti');
   int muisti = int.parse(elementti.value);
   if (muisti == null) {
@@ -34,6 +40,11 @@ generoi(e) {
   if (muisti > 10) {
     virheteksti('Muisti on yli 10, virhe!');
     return;
+  }
+
+  if (muisti == 4) {
+    querySelector('#teksti').text = 'muistin pituus on neljä';
+    //return;
   }
 
   int pituus = 1000;
@@ -46,10 +57,7 @@ generoi(e) {
   if (story.length < 20) {
     if (alkuteksti.length >= 20) {
       querySelector('#story').text = alkuteksti;
-      story = alkuteksti;
-      alkuteksti = '';
-      elementti = querySelector('#alkuteksti');
-      elementti.value = alkuteksti;
+      story = querySelector('#story').text;
     } else {
       virheteksti('Lähtöteksti liian lyhyt!');
       return;
@@ -60,8 +68,10 @@ generoi(e) {
 
   var muistiPatka = story.substring(0, muisti);
   var tulosTeksti = muistiPatka;
+
   var seuraava = 'a';
   querySelector('#teksti').text = tulosTeksti;
+
   while (tulosTeksti.length < pituus) {
     var rng = Random();
     var hyppyStoryyn = rng.nextInt(storyPituus);
@@ -80,7 +90,7 @@ generoi(e) {
           break;
         } else {
           hyppyStoryyn++;
-          if (hyppyStoryyn == storyPituus) {
+          if (hyppyStoryyn >= storyPituus) {
             hyppyStoryyn = 0;
           }
         }

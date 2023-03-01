@@ -1,0 +1,20 @@
+Tämän ohjeen englannin kielisen version on suomenkielestä kääntänyt google.
+
+Tekoäly on noussut puheenaiheeksi, syynä varsinkin Chat GPT, joka osaa yllättävän hyvin käyttää kieltä, myös suomea. Asiat näyttävät olevan yleensä hallinnassa, mutta silloin tällöin se tekee todella järjettömiä virheitä tosiasiain hallinnassa.
+
+Tuo ohjelma on luotu syöttämällä erittäin tehokkaille tietokoneille miljoonia (vai miljardeja?) dokumentteja, ja sen jälkeen ohjelmaa on vielä opetettu.
+
+Ohjelma toi mieleen oman kokeiluni, jonka tein Basicilla Sinclair Spectrumille 80-luvulla: ohjelmalle annetaan parametrina numero ja pätkä tekstiä. Ohjelma generoi satunnaisesti tekstistä uutta tekstiä ottaen aina huomioon niin monta edeltävää kirjainta kuin parametrina annettu. Tämä ohjelma on sille uusi toteutus, vapaasti koko maailman kokeiltavaksi. Kauneinta mielestäni toteutuksessa on se, että kieltä generoidaan laskematta mitään tilastollisia todonnäköisyyksiä. Lähtöteksti on sellaisenaan ainoa frekvessitaulukko!
+
+Ohjelma tarjoaa lähtötekstiksi muutamaa vaihtoehtoa (suomea, englantia ja dart-ohjelmointikieltä). Voi myös kirjoittaa tai kopioida muualta haluamansa tekstin. Lähtöteksti voi olla runoa tai proosaa, kaikki kielet käy (ainakin jos länsimaista kirjaimistoa käytetään). Lähtötekstistä riippuen muistiparametrin arvoilla 2 - 4 tulee luultavasti hauskimpia tuloksia.
+
+Puutteita ohjelmassa:
+- oman tekstin siirto ohjelmalle on kömpelö, ja ainakin kovat rivinvaihdot (eli kappalejako) katoaa. Kuka antaa esimerkin HTML:n 'textarea'n käsittelystä dart-ohjelmassa?
+- jos lähtötekstissä esiintyy muistiparametrin mittainen merkkijono vain kahdesti ja vielä lähellä toisinaan, niin tulostus voi aikansa änkyttää tämän merkkijonon liepeillä. Kyllä tämän voisi korjata, mutta lopputulos on ajoittain huvittava, ja ohjelman idea on olla mahdollisimman yksinkertainen!
+- muiden kuin latinalaisten kirjainten tuki puuttuu, tai on ainakin testaamatta. Ohjelman logiikka (generoi-funktio) ei ole mitenkään merkistöriippuvainen, kysymys on vain tiedon näyttämisessä ja säilyttömisessä merkkijonona.
+
+
+ 
+
+
+

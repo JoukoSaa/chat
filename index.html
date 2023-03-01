@@ -2,42 +2,38 @@
   <head>
     <title>Chat</title>
     <script src='app.js' defer></script>
+    <link rel='stylesheet' href='styles.css'>
   </head>
 <body>
   <h3>CHAT mini  </h3>
-  version 0.078
+  version 0.178
+
+  <div id='kysymys'>Valitse tiedosto</div>
+  <div id='vastaukset'>
+  </div>
 
 
-  <p>
-  <label for="dog-names">Valitse alkuteksti:</label>
-    <select name="dog-names" id="dog-names">
-        <option value="other">   </option>
-         <option value="lueminut.txt">lueminut.txt - ohjeita</option>
-        <option value="readme.txt">readme.txt - same in English </option>
-        <option value="yk.txt">Ihmisoikeuksien julistus</option>
-          <option value="un.txt">Declaration of Human Rights</option>
-          <option value="main.dart">main.dart - Tämän ohjelman koodi</option>
-      <option value="other">ei mitään (kirjoita tai kopioi lähtöteksti omin neuvoin)</option>
-    </select>
+
   <button id='pika'>main.dart</button></p>
  
-<p><a href="https://joukosaa.github.io/chat/maindart.txt"> github-txt polulla please, kiva </a></p>
-
 
   <p><label for="alkuteksti">Lähtöteksti:</label></p>
   <p> 
-    <input type="text" id='alkuteksti' name='alkuteksti' > </input>
+    <input type="text" id='alkuteksti' name='alkuteksti' ></input>
   </p>
-  
 
 <p><label for="story">Lähtöteksti (readonly):</label></p>
-<pre>
+<pre style="white-space: pre-wrap;">
 <p id='story' name = 'story' wrap></p></pre>
 
-  <p>
+<p>
     Muisti (0-10):<input type='number' id='muisti' min="0" max="10"></input>
     <button id='nappi'>Käynnistä!</button> 
-  </p>
+</p>
+<div id="nappi">
+    <button id="seuraava">Seuraava kysymys</button>
+</div>
+
   Tähän tulee ohjelman generoima teksti:
   <pre style="white-space: pre-wrap;">
   <p id='teksti'></p>

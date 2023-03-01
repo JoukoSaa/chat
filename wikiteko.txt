@@ -1,0 +1,9 @@
+Tekoäly eli keinoäly tai AI (englannin sanoista artificial intelligence) on tietokone tai tietokoneohjelma, joka kykenee tekemään älykkäinä pidettäviä toimintoja. Tekoälyn tarkempi määrittely on avoin, koska älykkyyttä itsessään on vaikea määritellä. Andreas Kaplan ja Michael Haenlein määrittelevät tekoälyn "järjestelmän kyvyksi tulkita ulkoisia tietoja oikein, oppia tällaisista tiedoista ja käyttää opittuja asioita tiettyjen tavoitteiden ja tehtävien saavuttamisessa joustavan sopeutumisen kautta". Tekoäly viittaa myös aihetta tutkivaan tieteen alaan.
+
+Eräässä merkityksessä tekoälynä pidetään tietokoneohjelmaa, joka suorittaa yleisesti ihmismäistä ajattelua (laskennallinen lähestymistapa). Tämän niin kutsutun yleisen tekoälyn kehittämisen ajankohdasta ei voida antaa juurikaan luotettavia ennusteita.
+
+Suppeammassa merkityksessä tekoäly on mikä tahansa johonkin älykkääseen toimintoon kykenevä. Tällaisia tekoälyjä on jo käytössä. Käytössä olevia tekoälyn sovelluksia ovat esimerkiksi luonnollisen kielen tuottamiseen ja tunnistamiseen erikoistuneet järjestelmät, asiantuntijajärjestelmät, robottitekniikka ja viihdesovellukset.
+
+Tekoäly ei yleensä suoriudu itsenäisesti kaikesta työstä, minkä vuoksi osa sen suorittamasta työstä on niin sanottua ihmisavusteista laskentaa (human computation). Tekoälyä avustava työ suoritetaan tyypillisesti etänä ja ilman työsuhdetta eli niin sanottuna haamutyönä, joka on yksi alustataloustyön muoto. Tyypillinen tuntiansio näissä töissä on vain kaksi dollaria. Arviolta kahdeksan prosenttia yhdysvaltalaisista on osallistunut haamutyön tekemiseen.
+
+Tekoäly on kehittynyt 2010-luvulla eksponentiaalisesti. Nousun ovat mahdollistaneet suorittimien laskentatehon merkittävä kasvu, oppivan tekoälyn harjoittamiseen käytetyn datan määrän kasvu sekä algoritmien parantunut saatavuus.
