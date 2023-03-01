@@ -3389,7 +3389,7 @@
     main() {
       var $async$goto = 0,
         $async$completer = A._makeAsyncAwaitCompleter(type$.dynamic),
-        t2, t3, t1, elementti;
+        t2, t3, t4, t1, elementti;
       var $async$main = A._wrapJsFunctionForAsync(function($async$errorCode, $async$result) {
         if ($async$errorCode === 1)
           return A._asyncRethrow($async$result, $async$completer);
@@ -3402,16 +3402,35 @@
               elementti.className = "vaihtoehto";
               B.DivElement_methods.set$text(elementti, "lueminut.txt - taustaa ja ohjeita");
               t2 = type$._ElementEventStreamImpl_legacy_MouseEvent;
-              t3 = t2._eval$1("~(1)?")._as(new A.main_closure());
+              t3 = t2._eval$1("~(1)?");
+              t4 = t3._as(new A.main_closure());
               type$.nullable_void_Function._as(null);
-              A._EventStreamSubscription$(elementti, "click", t3, false, t2._precomputed1);
+              t2 = t2._precomputed1;
+              A._EventStreamSubscription$(elementti, "click", t4, false, t2);
               J.get$children$x(t1.querySelector("#vastaukset")).add$1(0, elementti);
-              t2 = J.get$onClick$x(t1.querySelector("#pika"));
-              t3 = t2.$ti;
-              A._EventStreamSubscription$(t2._target, t2._eventType, t3._eval$1("~(1)?")._as(A.main__luetiedosto$closure()), false, t3._precomputed1);
+              elementti = t1.createElement("div");
+              elementti.className = "vaihtoehto";
+              B.DivElement_methods.set$text(elementti, "readme.txt - same in english");
+              A._EventStreamSubscription$(elementti, "click", t3._as(new A.main_closure0()), false, t2);
+              J.get$children$x(t1.querySelector("#vastaukset")).add$1(0, elementti);
+              elementti = t1.createElement("div");
+              elementti.className = "vaihtoehto";
+              B.DivElement_methods.set$text(elementti, "main.dart - t\xe4m\xe4n ohjelman l\xe4hdekoodi");
+              A._EventStreamSubscription$(elementti, "click", t3._as(new A.main_closure1()), false, t2);
+              J.get$children$x(t1.querySelector("#vastaukset")).add$1(0, elementti);
+              elementti = t1.createElement("div");
+              elementti.className = "vaihtoehto";
+              B.DivElement_methods.set$text(elementti, "Wikipedia: teko\xe4ly");
+              A._EventStreamSubscription$(elementti, "click", t3._as(new A.main_closure2()), false, t2);
+              J.get$children$x(t1.querySelector("#vastaukset")).add$1(0, elementti);
+              elementti = t1.createElement("div");
+              elementti.className = "vaihtoehto";
+              B.DivElement_methods.set$text(elementti, " oman tekstin sy\xf6tt\xf6");
+              A._EventStreamSubscription$(elementti, "click", t3._as(new A.main_closure3()), false, t2);
+              J.get$children$x(t1.querySelector("#vastaukset")).add$1(0, elementti);
               t1 = J.get$onClick$x(t1.querySelector("#nappi"));
-              t3 = t1.$ti;
-              A._EventStreamSubscription$(t1._target, t1._eventType, t3._eval$1("~(1)?")._as(A.main__generoi$closure()), false, t3._precomputed1);
+              t2 = t1.$ti;
+              A._EventStreamSubscription$(t1._target, t1._eventType, t2._eval$1("~(1)?")._as(A.main__generoi$closure()), false, t2._precomputed1);
               // implicit return
               return A._asyncReturn(null, $async$completer);
           }
@@ -3430,13 +3449,12 @@
             case 0:
               // Function start
               $async$goto = 2;
-              return A._asyncAwait(A.HttpRequest_getString("https://joukosaa.github.io/chat/" + A.S(tied)), $async$luetiedosto);
+              return A._asyncAwait(A.HttpRequest_getString("https://joukosaa.github.io/chat/" + tied), $async$luetiedosto);
             case 2:
               // returning from await.
               sisalto = $async$result;
               t1 = document;
               J.set$text$x(t1.querySelector("#story"), sisalto);
-              J.set$text$x(t1.querySelector("#alkuteksti"), "");
               J.set$text$x(t1.querySelector("#teksti"), "");
               // implicit return
               return A._asyncReturn(null, $async$completer);
@@ -3500,6 +3518,14 @@
       }
     },
     main_closure: function main_closure() {
+    },
+    main_closure0: function main_closure0() {
+    },
+    main_closure1: function main_closure1() {
+    },
+    main_closure2: function main_closure2() {
+    },
+    main_closure3: function main_closure3() {
     },
     throwLateFieldADI(fieldName) {
       return A.throwExpression(new A.LateError("Field '" + A.S(fieldName) + "' has been assigned during initialization."));
@@ -4056,19 +4082,19 @@
     call$1(o) {
       return this.getTag(o);
     },
-    $signature: 1
+    $signature: 3
   };
   A.initHooks_closure0.prototype = {
     call$2(o, tag) {
       return this.getUnknownTag(o, tag);
     },
-    $signature: 5
+    $signature: 6
   };
   A.initHooks_closure1.prototype = {
     call$1(tag) {
       return this.prototypeForTag(A._asStringS(tag));
     },
-    $signature: 6
+    $signature: 7
   };
   A.Rti.prototype = {
     _eval$1(recipe) {
@@ -4097,7 +4123,7 @@
       t1.storedCallback = null;
       f.call$0();
     },
-    $signature: 3
+    $signature: 4
   };
   A._AsyncRun__initializeScheduleImmediate_closure.prototype = {
     call$1(callback) {
@@ -4107,19 +4133,19 @@
       t2 = this.span;
       t1.firstChild ? t1.removeChild(t2) : t1.appendChild(t2);
     },
-    $signature: 7
+    $signature: 8
   };
   A._AsyncRun__scheduleImmediateJsOverride_internalCallback.prototype = {
     call$0() {
       this.callback.call$0();
     },
-    $signature: 4
+    $signature: 5
   };
   A._AsyncRun__scheduleImmediateWithSetImmediate_internalCallback.prototype = {
     call$0() {
       this.callback.call$0();
     },
-    $signature: 4
+    $signature: 5
   };
   A._TimerImpl.prototype = {
     _TimerImpl$2(milliseconds, callback) {
@@ -4165,19 +4191,19 @@
     call$1(result) {
       return this.bodyFunction.call$2(0, result);
     },
-    $signature: 8
+    $signature: 9
   };
   A._awaitOnObject_closure0.prototype = {
     call$2(error, stackTrace) {
       this.bodyFunction.call$2(1, new A.ExceptionAndStackTrace(error, type$.StackTrace._as(stackTrace)));
     },
-    $signature: 9
+    $signature: 10
   };
   A._wrapJsFunctionForAsync_closure.prototype = {
     call$2(errorCode, result) {
       this.$protected(A._asIntS(errorCode), result);
     },
-    $signature: 10
+    $signature: 11
   };
   A.AsyncError.prototype = {
     toString$0(_) {
@@ -4427,13 +4453,13 @@
         t1._completeError$2(error, stackTrace);
       }
     },
-    $signature: 3
+    $signature: 4
   };
   A._Future__chainForeignFuture_closure0.prototype = {
     call$2(error, stackTrace) {
       this.$this._completeError$2(error, type$.StackTrace._as(stackTrace));
     },
-    $signature: 12
+    $signature: 13
   };
   A._Future__chainForeignFuture_closure1.prototype = {
     call$0() {
@@ -4504,7 +4530,7 @@
     call$1(_) {
       return this.originalSource;
     },
-    $signature: 13
+    $signature: 14
   };
   A._Future__propagateToListeners_handleValueCallback.prototype = {
     call$0() {
@@ -4982,7 +5008,7 @@
       t1.toString;
       return t1;
     },
-    $signature: 14
+    $signature: 15
   };
   A.HttpRequest_request_closure.prototype = {
     call$1(e) {
@@ -5000,10 +5026,15 @@
       else
         t3.completeError$1(e);
     },
-    $signature: 15
+    $signature: 16
   };
   A.HttpRequestEventTarget.prototype = {};
-  A.InputElement.prototype = {$isInputElement: 1};
+  A.InputElement.prototype = {
+    set$value(receiver, value) {
+      receiver.value = value;
+    },
+    $isInputElement: 1
+  };
   A.MouseEvent.prototype = {$isMouseEvent: 1};
   A._ChildNodeListLazy.prototype = {
     get$iterator(_) {
@@ -5063,7 +5094,7 @@
     call$1(e) {
       return this.onData.call$1(type$.Event._as(e));
     },
-    $signature: 16
+    $signature: 17
   };
   A.ImmutableListMixin.prototype = {
     get$iterator(receiver) {
@@ -5122,13 +5153,13 @@
     call$1(n) {
       return type$.Element._is(type$.Node._as(n));
     },
-    $signature: 17
+    $signature: 18
   };
   A.FilteredElementList__iterable_closure0.prototype = {
     call$1(n) {
       return type$.Element._as(type$.Node._as(n));
     },
-    $signature: 18
+    $signature: 19
   };
   A._JSRandom.prototype = {
     nextInt$1(max) {
@@ -5148,9 +5179,46 @@
   A.main_closure.prototype = {
     call$1(e) {
       type$.legacy_MouseEvent._as(e);
+      A.luetiedosto("lueminut.txt");
+    },
+    $signature: 1
+  };
+  A.main_closure0.prototype = {
+    call$1(e) {
+      type$.legacy_MouseEvent._as(e);
+      A.luetiedosto("readme.txt");
+    },
+    $signature: 1
+  };
+  A.main_closure1.prototype = {
+    call$1(e) {
+      type$.legacy_MouseEvent._as(e);
       A.luetiedosto("main.dart");
     },
-    $signature: 19
+    $signature: 1
+  };
+  A.main_closure2.prototype = {
+    call$1(e) {
+      type$.legacy_MouseEvent._as(e);
+      A.luetiedosto("wikiteko.txt");
+    },
+    $signature: 1
+  };
+  A.main_closure3.prototype = {
+    call$1(e) {
+      var t1, apuele, alkuteksti;
+      type$.legacy_MouseEvent._as(e);
+      t1 = document;
+      apuele = type$.legacy_InputElement._as(t1.querySelector("#alkuteksti"));
+      alkuteksti = apuele.value;
+      if (alkuteksti.length >= 20) {
+        J.set$text$x(t1.querySelector("#story"), alkuteksti);
+        B.InputElement_methods.set$value(apuele, "");
+      } else
+        J.set$text$x(t1.querySelector("#story"), "Kirjoita tai kopioi teksti Oma l\xe4ht\xf6teksti-kentt\xe4\xe4n (v\xe4h. 20 merkki\xe4)");
+      J.set$text$x(t1.querySelector("#teksti"), "");
+    },
+    $signature: 1
   };
   (function aliases() {
     var _ = J.Interceptor.prototype;
@@ -5166,9 +5234,8 @@
     _static_1(A, "async__AsyncRun__scheduleImmediateWithSetImmediate$closure", "_AsyncRun__scheduleImmediateWithSetImmediate", 2);
     _static_1(A, "async__AsyncRun__scheduleImmediateWithTimer$closure", "_AsyncRun__scheduleImmediateWithTimer", 2);
     _static_0(A, "async___startMicrotaskLoop$closure", "_startMicrotaskLoop", 0);
-    _instance(A._Completer.prototype, "get$completeError", 0, 1, null, ["call$2", "call$1"], ["completeError$2", "completeError$1"], 11, 0, 0);
-    _static_1(A, "main__luetiedosto$closure", "luetiedosto", 1);
-    _static_1(A, "main__generoi$closure", "generoi", 1);
+    _instance(A._Completer.prototype, "get$completeError", 0, 1, null, ["call$2", "call$1"], ["completeError$2", "completeError$1"], 12, 0, 0);
+    _static_1(A, "main__generoi$closure", "generoi", 3);
   })();
   (function inheritance() {
     var _mixin = hunkHelpers.mixin,
@@ -5185,7 +5252,7 @@
     _inheritMany(A.Iterable, [A.MappedIterable, A.WhereIterable]);
     _inheritMany(A.Iterator, [A.MappedIterator, A.WhereIterator]);
     _inherit(A.NullError, A.TypeError);
-    _inheritMany(A.Closure, [A.Closure0Args, A.Closure2Args, A.TearOffClosure, A.initHooks_closure, A.initHooks_closure1, A._AsyncRun__initializeScheduleImmediate_internalCallback, A._AsyncRun__initializeScheduleImmediate_closure, A._awaitOnObject_closure, A._Future__chainForeignFuture_closure, A._Future__propagateToListeners_handleWhenCompleteCallback_closure, A.Stream_length_closure, A._RootZone_bindUnaryCallbackGuarded_closure, A.HttpRequest_getString_closure, A.HttpRequest_request_closure, A._EventStreamSubscription_closure, A.FilteredElementList__iterable_closure, A.FilteredElementList__iterable_closure0, A.main_closure]);
+    _inheritMany(A.Closure, [A.Closure0Args, A.Closure2Args, A.TearOffClosure, A.initHooks_closure, A.initHooks_closure1, A._AsyncRun__initializeScheduleImmediate_internalCallback, A._AsyncRun__initializeScheduleImmediate_closure, A._awaitOnObject_closure, A._Future__chainForeignFuture_closure, A._Future__propagateToListeners_handleWhenCompleteCallback_closure, A.Stream_length_closure, A._RootZone_bindUnaryCallbackGuarded_closure, A.HttpRequest_getString_closure, A.HttpRequest_request_closure, A._EventStreamSubscription_closure, A.FilteredElementList__iterable_closure, A.FilteredElementList__iterable_closure0, A.main_closure, A.main_closure0, A.main_closure1, A.main_closure2, A.main_closure3]);
     _inheritMany(A.TearOffClosure, [A.StaticClosure, A.BoundClosure]);
     _inherit(A._AssertionError, A.AssertionError);
     _inheritMany(A.Closure2Args, [A.initHooks_closure0, A._awaitOnObject_closure0, A._wrapJsFunctionForAsync_closure, A._Future__chainForeignFuture_closure0]);
@@ -5220,7 +5287,7 @@
     typeUniverse: {eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: []},
     mangledGlobalNames: {int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List"},
     mangledNames: {},
-    types: ["~()", "@(@)", "~(~())", "Null(@)", "Null()", "@(@,String)", "@(String)", "Null(~())", "~(@)", "Null(@,StackTrace)", "~(int,@)", "~(Object[StackTrace?])", "Null(Object,StackTrace)", "_Future<@>(@)", "String(HttpRequest)", "~(ProgressEvent)", "~(Event)", "bool(Node)", "Element(Node)", "Null(MouseEvent*)"],
+    types: ["~()", "Null(MouseEvent*)", "~(~())", "@(@)", "Null(@)", "Null()", "@(@,String)", "@(String)", "Null(~())", "~(@)", "Null(@,StackTrace)", "~(int,@)", "~(Object[StackTrace?])", "Null(Object,StackTrace)", "_Future<@>(@)", "String(HttpRequest)", "~(ProgressEvent)", "~(Event)", "bool(Node)", "Element(Node)"],
     interceptorsByTag: null,
     leafTags: null,
     arrayRti: Symbol("$ti")
@@ -5287,6 +5354,7 @@
   (function constants() {
     B.DivElement_methods = A.DivElement.prototype;
     B.HttpRequest_methods = A.HttpRequest.prototype;
+    B.InputElement_methods = A.InputElement.prototype;
     B.Interceptor_methods = J.Interceptor.prototype;
     B.JSArray_methods = J.JSArray.prototype;
     B.JSInt_methods = J.JSInt.prototype;
