@@ -14,7 +14,7 @@ main() async {
 
   elementti = Element.div();
   elementti.className = 'vaihtoehto';
-  elementti.text = 'readme.txt - same in english';
+  elementti.text = 'readme.txt - same in English';
   elementti.onClick.listen((e) {
     luetiedosto('readme.txt');
   });

@@ -3410,7 +3410,7 @@
               J.get$children$x(t1.querySelector("#vastaukset")).add$1(0, elementti);
               elementti = t1.createElement("div");
               elementti.className = "vaihtoehto";
-              B.DivElement_methods.set$text(elementti, "readme.txt - same in english");
+              B.DivElement_methods.set$text(elementti, "readme.txt - same in English");
               A._EventStreamSubscription$(elementti, "click", t3._as(new A.main_closure0()), false, t2);
               J.get$children$x(t1.querySelector("#vastaukset")).add$1(0, elementti);
               elementti = t1.createElement("div");
