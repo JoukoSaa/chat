@@ -6,12 +6,12 @@ Tuo ohjelma on luotu syöttämällä erittäin tehokkaille tietokoneille miljoon
 
 Ohjelma toi mieleen oman kokeiluni, jonka tein Basicilla Sinclair Spectrumille 80-luvulla: ohjelmalle annetaan parametrina numero ja pätkä tekstiä. Ohjelma generoi satunnaisesti tekstistä uutta tekstiä ottaen aina huomioon niin monta edeltävää kirjainta kuin parametrina annettu. Tämä ohjelma on sille uusi toteutus, vapaasti koko maailman kokeiltavaksi. Kauneinta mielestäni toteutuksessa on se, että kieltä generoidaan laskematta mitään tilastollisia todennäköisyyksiä. Lähtöteksti on sellaisenaan ainoa taulukko!
 
-Ohjelma tarjoaa lähtötekstiksi muutamaa vaihtoehtoa (suomea, englantia ja dart-ohjelmointikieltä). Voi myös kirjoittaa tai kopioida muualta haluamansa tekstin. Lähtöteksti voi olla runoa tai proosaa, kaikki kielet käy (ainakin jos länsimaista kirjaimistoa käytetään). Lähtötekstistä riippuen muistiparametrin arvoilla 2 - 4 tulee luultavasti hauskimpia tuloksia.
+Ohjelma tarjoaa lähtötekstiksi muutamaa vaihtoehtoa. Lähtötekstistä riippuen muistiparametrin arvoilla 2 - 4 tulee luultavasti hauskimpia tuloksia.
 
 Puutteita ohjelmassa:
 - oman tekstin siirto ohjelmalle on kömpelö, ja ainakin kovat rivinvaihdot (eli kappalejako) katoaa. Kuka antaa esimerkin HTML:n 'textarea'n käsittelystä dart-ohjelmassa?
 - jos lähtötekstissä esiintyy muistiparametrin mittainen merkkijono vain kahdesti ja vielä lähellä toisinaan, niin tulostus voi aikansa änkyttää tämän merkkijonon liepeillä. Kyllä tämän voisi korjata, mutta lopputulos on ajoittain huvittava, ja ohjelman idea on olla mahdollisimman yksinkertainen!
-- muiden kuin latinalaisten kirjainten tuki puuttuu, tai on ainakin testaamatta. Ohjelman logiikka (generoi-funktio) ei ole mitenkään merkistöriippuvainen, kysymys on vain tiedon näyttämisessä ja säilyttämisessä merkkijonona.
+- muiden kuin latinalaisten kirjainten tuki on testaamatta, ylimalkaisesti vilkaistuna näyttää kyllä toimivan. Ohjelman logiikka (generoi-funktio) ei ole mitenkään merkistöriippuvainen, kysymys on vain tiedon näyttämisessä ja säilyttämisessä merkkijonona.
 
 
  

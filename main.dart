@@ -116,7 +116,6 @@ generoi(e) {
   //}
 
   while (tulosTeksti.length < pituus) {
-    int paluu = 0;
     var rng = Random();
     var hyppyStoryyn = rng.nextInt(storyPituus);
     if (muisti == 0) {
@@ -134,13 +133,7 @@ generoi(e) {
         } else {
           hyppyStoryyn++;
           if (hyppyStoryyn >= storyPituus) {
-            if (paluu > 0) {
-              querySelector('#teksti').text =
-                  '$tulosTeksti tuplapaluu /$muistiPatka/ OHJELMAVIRHE';
-              return;
-            }
             hyppyStoryyn = 0;
-            paluu++;
           }
         }
       }

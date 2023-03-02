@@ -6,7 +6,7 @@
   </head>
 <body>
   <h3>CHAT mini  </h3>
-  version 0.278
+  version 0.937
 
   <div id='kysymys'>Valitse tiedosto</div>
   <div id='vastaukset'>
@@ -17,19 +17,17 @@
     <input type="text" id='alkuteksti' name='alkuteksti' ></input>
   </p>
 
-<p><label for="story">Lähtöteksti (readonly):</label></p>
+<div id='kysymys'>Lähtöteksti:</div>
 <pre style="white-space: pre-wrap;">
 <p id='story' name = 'story' wrap></p></pre>
 
-<p>
+<h3>
     Muisti (0-10):<input type='number' id='muisti' min="0" max="10"></input>
-    <button id='nappi'>Käynnistä!</button> 
-</p>
-<div id="nappi">
-    <button id="seuraava">Seuraava kysymys</button>
-</div>
+    <button id="nappi">Käynnistä!</button>
+</h3>
 
-  Tähän tulee ohjelman generoima teksti:
+<div id='kysymys'>Uusi generoitu teksti:</div>
+
   <pre style="white-space: pre-wrap;">
   <p id='teksti'></p>
   </pre>
